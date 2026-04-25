@@ -9,9 +9,12 @@ export default function DashboardPage() {
   const [walletConnected, setWalletConnected] = useState(false);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-6 py-12 relative">
+      <div className="absolute -z-10 top-4 left-10 w-56 h-56 rounded-full bg-cyan-500/15 blur-3xl" />
+      <div className="absolute -z-10 top-20 right-6 w-64 h-64 rounded-full bg-purple-500/10 blur-3xl" />
+
       {/* Header row */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12 glass-panel rounded-2xl p-6">
         <div>
           <h1 className="text-3xl font-bold text-white mb-1">Your Badges</h1>
           <p className="text-slate-400 text-sm">
@@ -23,7 +26,7 @@ export default function DashboardPage() {
 
       {/* Status banner */}
       {!walletConnected && (
-        <div className="mb-8 flex items-center gap-3 px-5 py-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+        <div className="mb-8 flex items-center gap-3 px-5 py-4 rounded-xl bg-amber-500/8 border border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.08)]">
           <svg className="w-5 h-5 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
@@ -49,7 +52,7 @@ export default function DashboardPage() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl border border-white/5 bg-[#0d0d14] px-5 py-4 flex flex-col gap-1"
+            className="scanline rounded-xl border border-white/10 bg-gradient-to-br from-[#10101a] to-[#090911] px-5 py-4 flex flex-col gap-1 shadow-[0_0_20px_rgba(0,0,0,0.3)]"
           >
             <p className="text-xs text-slate-500 uppercase tracking-wider">{stat.label}</p>
             <p className="text-2xl font-bold text-white">{stat.value}</p>
