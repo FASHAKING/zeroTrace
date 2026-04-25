@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050508;
+  --foreground: #e2e8f0;
+  --neon-blue: #00d4ff;
+  --neon-purple: #9b59ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-purple: var(--neon-purple);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(155, 89, 255, 0.3), 0 0 40px rgba(155, 89, 255, 0.1);
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 20px rgba(155, 89, 255, 0.6);
+}
+
+.gradient-border {
+  background: linear-gradient(#0d0d14, #0d0d14) padding-box,
+    linear-gradient(135deg, #00d4ff, #9b59ff) border-box;
+  border: 1px solid transparent;
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 50%, rgba(155, 89, 255, 0.06) 0%, transparent 60%);
+}
