@@ -49,12 +49,10 @@ export const BADGES: Badge[] = [
 ];
 
 function generateProofHash(): string {
-  const chars = 'abcdef0123456789';
-  let hash = '0x';
-  for (let i = 0; i < 64; i++) {
-    hash += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return hash;
+  const bytes = new Uint8Array(32);
+  crypto.getRandomValues(bytes);
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
+  return `0x${hex}`;
 }
 
 export function generateProof(badgeId: BadgeId): Proof {
