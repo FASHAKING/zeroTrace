@@ -1,8 +1,14 @@
+export type ProofBadge =
+  | 'Early Miden User'
+  | 'Active Builder'
+  | 'Consistent Wallet'
+  | 'Private Holder';
+
 export type BadgeId = 'early-miden-user' | 'active-builder' | 'consistent-wallet' | 'private-holder';
 
 export interface Badge {
   id: BadgeId;
-  name: string;
+  name: ProofBadge;
   description: string;
   icon: string;
   color: 'blue' | 'purple' | 'cyan' | 'violet';
@@ -10,11 +16,11 @@ export interface Badge {
 
 export interface Proof {
   id: string;
-  badgeId: BadgeId;
-  badgeName: string;
+  badge: ProofBadge;
+  verified: boolean;
   proofHash: string;
   timestamp: string;
-  verified: boolean;
+  network: 'Miden';
 }
 
 export const BADGES: Badge[] = [
@@ -48,26 +54,19 @@ export const BADGES: Badge[] = [
   },
 ];
 
-function generateProofHash(): string {
-  const chars = 'abcdef0123456789';
-  let hash = '0x';
-  for (let i = 0; i < 64; i++) {
-    hash += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return hash;
-}
-
-export function generateProof(badgeId: BadgeId): Proof {
-  const badge = BADGES.find((b) => b.id === badgeId);
-  if (!badge) throw new Error(`Unknown badge: ${badgeId}`);
-
+export function generateProof(badge: ProofBadge): Proof {
+  const proofId = crypto.randomUUID();
   const proof: Proof = {
-    id: `${badgeId}-${Date.now()}`,
-    badgeId,
-    badgeName: badge.name,
-    proofHash: generateProofHash(),
-    timestamp: new Date().toISOString(),
+    id: proofId,
+    badge,
     verified: true,
+    proofHash:
+      '0x' +
+      Array.from(crypto.getRandomValues(new Uint8Array(32)))
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join(''),
+    timestamp: new Date().toISOString(),
+    network: 'Miden',
   };
 
   const stored = getStoredProofs();

@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import ProofCard from '@/components/ProofCard';
 import { getProofById, Proof } from '@/lib/proofs';
 
 export default function ProofPage() {
   const { id } = useParams<{ id: string }>();
-  const router = useRouter();
   const [proof, setProof] = useState<Proof | null>(null);
   const [loading, setLoading] = useState(true);
 

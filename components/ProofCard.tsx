@@ -35,7 +35,7 @@ export default function ProofCard({ proof }: ProofCardProps) {
             </svg>
           </div>
           <div>
-            <p className="text-white font-semibold">{proof.badgeName}</p>
+            <p className="text-white font-semibold">{proof.badge}</p>
             <p className="text-green-400 text-xs font-medium">Verified</p>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function ProofCard({ proof }: ProofCardProps) {
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-xs text-slate-500 uppercase tracking-wider font-medium">Network</label>
-            <p className="text-slate-300 text-sm">Polygon Miden</p>
+            <p className="text-slate-300 text-sm">Miden</p>
           </div>
           <div className="flex flex-col gap-1">
             <label className="text-xs text-slate-500 uppercase tracking-wider font-medium">Proof Type</label>
