@@ -55,7 +55,7 @@ export default function BadgeCard({ badge, walletConnected }: BadgeCardProps) {
     await new Promise((r) => setTimeout(r, 1800));
     const proof = generateProof(badge.id);
     setGenerating(false);
-    router.push(`/proof/${proof.id}`);
+    router.push(`/proof?id=${encodeURIComponent(proof.id)}`);
   };
 
   return (
