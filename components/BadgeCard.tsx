@@ -60,10 +60,11 @@ export default function BadgeCard({ badge, walletConnected }: BadgeCardProps) {
 
   return (
     <div
-      className={`relative rounded-2xl border bg-[#0d0d14] p-6 transition-all duration-300 ${c.border} flex flex-col gap-4`}
+      className={`relative rounded-2xl border bg-[#0d0d14] p-6 transition-all duration-300 ${c.border} flex flex-col gap-4 hover:-translate-y-1 hover:shadow-[0_16px_50px_rgba(0,0,0,0.45)] scanline`}
     >
+      <div className="absolute inset-0 rounded-2xl pointer-events-none bg-gradient-to-br from-white/[0.06] via-transparent to-transparent" />
       <div className="flex items-start justify-between">
-        <div className={`w-12 h-12 rounded-xl ${c.iconBg} flex items-center justify-center text-2xl`}>
+        <div className={`w-12 h-12 rounded-xl ${c.iconBg} flex items-center justify-center text-2xl shadow-inner`}>
           {badge.icon}
         </div>
         <span className={`text-xs px-2.5 py-1 rounded-full border ${c.tag} font-mono`}>
@@ -86,7 +87,7 @@ export default function BadgeCard({ badge, walletConnected }: BadgeCardProps) {
       <button
         onClick={handleGenerate}
         disabled={generating || !walletConnected}
-        className={`mt-auto w-full py-2.5 rounded-xl font-medium text-sm text-white bg-gradient-to-r ${c.btn} transition-all ${c.glow} disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none`}
+        className={`mt-auto w-full py-2.5 rounded-xl font-medium text-sm text-white bg-gradient-to-r ${c.btn} transition-all ${c.glow} hover:scale-[1.01] disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none disabled:hover:scale-100`}
       >
         {generating ? (
           <span className="flex items-center justify-center gap-2">

@@ -55,7 +55,10 @@ export default function ProofPage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12">
+    <div className="max-w-2xl mx-auto px-6 py-12 relative">
+      <div className="absolute -z-10 top-8 -left-8 w-48 h-48 rounded-full bg-cyan-500/15 blur-3xl" />
+      <div className="absolute -z-10 top-28 -right-8 w-56 h-56 rounded-full bg-purple-500/12 blur-3xl" />
+
       <Link
         href="/dashboard"
         className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm mb-8 group"
@@ -66,7 +69,7 @@ export default function ProofPage() {
         Back to Dashboard
       </Link>
 
-      <div className="mb-8">
+      <div className="mb-8 glass-panel rounded-2xl p-6">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/5 text-green-400 text-xs font-medium mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
           Proof Verified
@@ -79,7 +82,7 @@ export default function ProofPage() {
 
       <ProofCard proof={proof} />
 
-      <div className="mt-6 p-4 rounded-xl bg-black/30 border border-white/5">
+      <div className="mt-6 p-4 rounded-xl bg-black/35 border border-white/10">
         <p className="text-xs text-slate-500 text-center">
           This proof was generated client-side and stored locally. Your wallet address,
           balance, and transaction history were never transmitted or stored externally.
