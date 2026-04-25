@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/proof/:id",
+      "destination": "/proof?id=:id"
+    }
+  ]
+}
